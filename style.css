@@ -37,14 +37,14 @@ html,body{
     margin-left: auto;
     margin-right: auto;
     display: flex;
-    gap: 2px;
+    gap: 10px;
 }
 .operators{
     width: 80%;
     height: 100%;
 }
 .operations{
-    height: 100%;
+    height: 99%;
     width: 20%;
     display: flex;
     gap: 10px;
@@ -63,26 +63,31 @@ html,body{
 .clearbuttons{
     height: 20%;
     display: flex;
-    gap: 2px;
+    gap: 10px;
     width: 100%;
 }
 .numbers{
     height: 80%;
     display: flex;
-    gap: 2px;
-    flex-wrap: wrap;
-    margin-top: 100px;
+    flex-direction: column;
 }
-.numbers>button{
-    height: calc(20% - 1rem); /* Dynamically calculate height to fit rows */
+.numbers>div{
+    height: 25%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.numbers>div>button{
+    height:  95%; /* Dynamically calculate height to fit rows */
     font-size: 100px;
-    width: 33%;
+    width: 33.333%; /* Ensure buttons fit the row */
     background-color: green;
     border-radius: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
 .clearbuttons>div{
     font-size: 40px;
     display: flex;
@@ -93,7 +98,7 @@ html,body{
     background-color: blue;
     border-radius: 15px;
 }
-.numbers>button:nth-child(10){
+.numbers>.buttonDivFour>button:nth-child(1){
     flex-grow: 1;
     margin-right: 2px;
 }
