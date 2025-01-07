@@ -12,59 +12,61 @@ html,body{
     justify-content: center;
 }
 .calculator{
-    height: 50%;
+    height: 500px;
     width: 30%;
     margin-left: auto;
     margin-right: auto;
-    border: 20px solid #1F2937;
+    border: 10px solid #1F2937;
     background-color: black;
-    padding-bottom: 50px;
+    padding-bottom: 20px;
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 10px;
+    box-sizing: border-box;
 }
 .onscreen{
     margin-top: 10px;
     margin-left: auto;
     margin-right: auto;
     width: 98%;
-    height: 15%;
+    height: 25%;
     background-color: #E6E6FA;
 }
 .AllButtons{
-    height: 85%;
+    height: 75%;
     width: 98%;
     margin-left: auto;
     margin-right: auto;
     display: flex;
-    gap: 10px;
+    gap: 2px;
 }
 .operators{
     width: 80%;
     height: 100%;
 }
 .operations{
-    height: 99%;
+    height: 80%;
     width: 20%;
     display: flex;
-    gap: 10px;
+    gap: 2px;
     flex-direction: column;
 }
 .operations>div{
     background-color: #00b7ff;
-    border-radius: 15px;
-    height: 20%;
+    border-radius: 5px;
+    height: 26%;
     width: 100%;
-    font-size: 50px;
+    font-size: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 .clearbuttons{
-    height: 20%;
+    height: 25%;
     display: flex;
-    gap: 10px;
+    gap: 2px;
     width: 100%;
+    margin-bottom: 4px;
 }
 .numbers{
     height: 80%;
@@ -78,25 +80,25 @@ html,body{
     justify-content: space-between;
 }
 .numbers>div>button{
-    height:  95%; /* Dynamically calculate height to fit rows */
-    font-size: 100px;
+    height: 100%; /* Dynamically calculate height to fit rows */
+    font-size: 50px;
     width: 33.333%; /* Ensure buttons fit the row */
     background-color: green;
-    border-radius: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 5px;
 }
 
 .clearbuttons>div{
-    font-size: 40px;
+    font-size: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 35%;
-    height: calc(100% - 1rem); /* Dynamically calculate height to fit rows */
+    height: 100%; /* Dynamically calculate height to fit rows */
     background-color: blue;
-    border-radius: 15px;
+    border-radius: 5px;
 }
 .numbers>.buttonDivFour>button:nth-child(1){
     flex-grow: 1;
