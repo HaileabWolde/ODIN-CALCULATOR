@@ -33,6 +33,7 @@ html,body{
     background-color: #b2b9b7;
 }
 .AllButtons{
+    cursor: pointer;
     height: 75%;
     width: 98%;
     margin-left: auto;
@@ -80,6 +81,7 @@ html,body{
     justify-content: space-between;
 }
 .numbers>div>button{
+    cursor: pointer;
     height: 100%; /* Dynamically calculate height to fit rows */
     font-size: 50px;
     width: 33.333%; /* Ensure buttons fit the row */
