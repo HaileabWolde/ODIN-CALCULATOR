@@ -106,3 +106,10 @@ html,body{
     flex-grow: 1;
     margin-right: 2px;
 }
+.onscreen{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    font-size: 50px;
+    font-weight: bold;
+}
