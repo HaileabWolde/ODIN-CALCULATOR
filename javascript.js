@@ -3,53 +3,64 @@ let operations = document.querySelector(".operations");
 let onscreen = document.querySelector(".onscreen");
 let isSecondNumber = false;
 let firstNumber = "";
-let operator = ""; 
-
+let secondNumber = "";
+let result = "";
 function AddNumbers(a, b){
-   console.log("hello motherfuckers");
+     result = a + b;
+    onscreen.textContent = result;
+    firstNumber = result;
+    secondNumber = "";
 }
 function SubNumbers(a, b){
-    console.log(a - b);
+     result = a - b;
+    onscreen.textContent = result;
+    firstNumber = result;
+    secondNumber = "";
 }
 function MultipleNumbers(a, b){
-    console.log(a * b)
+     result = a * b;
+    onscreen.textContent = result;
+    firstNumber = result;
+    secondNumber = "";
 }
 function DivNumbers(a, b){
-    console.log(a / b);
+    result = a / b;
+    onscreen.textContent = result;
+    firstNumber = result;
+    secondNumber = "";
 }
 function ButtonClick(e){
-     if (isSecondNumber == true || onscreen.textContent == ""){
-        onscreen.textContent = "";
+    if(onscreen.textContent == ""){
+        onscreen.textContent = e.target.id;
     }
-    onscreen.textContent = `${onscreen.textContent}${e.target.id}` ;
+    else if (isSecondNumber){
+        onscreen.textContent = "";
+        secondNumber += e.target.id;
+        onscreen.textContent = secondNumber;
+    }
+    else{
+        onscreen.textContent = `${onscreen.textContent}${e.target.id}`;
+    }  
 }
 function StartOperations(e){
     isSecondNumber = true;
-    firstNumber = onscreen.textContent;
-    if(e.target.id = "+"){
-        operator = "+"
+    if(!firstNumber){
+        firstNumber = onscreen.textContent;
     }
-    else if(e.target.id = "-"){
-        operator = "-"
-    }
-    else if(e.target.id = "/"){
-        operator = "/"
-    }
-    else if(e.target.id = "*"){
-        operator = "*"
-    }
-    else {
-        if(operator = "*"){
-            MultipleNumbers(firstNumber, onscreen.textContent)
-        }
-        else if(operator = "/"){
-            DivNumbers(firstNumber, onscreen.textContent)
-        }
-        else if(operator = "+"){
-            AddNumbers(firstNumber, onscreen.textContent)
-        }
-        else {
-            SubNumbers(firstNumber, onscreen.textContent)
+    let operator = e.target.id;
+    if(secondNumber){
+        switch (operator){
+            case "*":
+                MultipleNumbers(parseInt(firstNumber), parseInt(secondNumber));
+                break;
+            case "/":
+                DivNumbers(parseInt(firstNumber), parseInt(secondNumber));
+                break;
+            case "+":
+                AddNumbers(parseInt(firstNumber), parseInt(secondNumber));
+                break;
+            default:
+                SubNumbers(parseInt(firstNumber), parseInt(secondNumber));
         }
     }
 }
