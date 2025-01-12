@@ -38,6 +38,7 @@ function DivNumbers(a, b){
         firstNumber = "";
         secondNumber = "";
         result = "";
+        isSecondNumber = false;
     }
     else{
         result = a / b;
@@ -77,6 +78,10 @@ function ButtonClick(e){
         onscreen.textContent = "";
         secondNumber += e.target.id;
         onscreen.textContent = secondNumber;
+    }
+    else if(onscreen.textContent == "👀"){
+        onscreen.textContent = "";
+        onscreen.textContent = `${onscreen.textContent}${e.target.id}`
     }
     else{
         onscreen.textContent = `${onscreen.textContent}${e.target.id}`;
