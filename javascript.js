@@ -9,7 +9,6 @@ let firstNumber = "";
 let secondNumber = "";
 let result = "";
 let operationsvalue = false;
-let isPoint = false;
 let currentOperations = null;
 function AddNumbers(a, b){
      result = a + b;
@@ -54,72 +53,77 @@ function EqualNumbers(a, b){
         switch(currentOperations){
             case '*':
                 MultipleNumbers(a, b);
+                break;
             case '/':
                 DivNumbers(a, b);
+                break;
             case '+':
-                SubNumbers(a, b);
-            default:
                 AddNumbers(a, b);
+                break;
+            case '-':
+                SubNumbers(a, b);
+                break;
+            default:
+                break;
         }
     }
 }
 function ButtonClick(e){
-    if(onscreen.textContent == ""){
-        onscreen.textContent = e.target.id;
+    const input = e.target.id;
+    // Prevent adding more than one decimal point
+    if (input === '.' && onscreen.textContent.includes('.')) {
+        return; // Do nothing if a decimal point is already present
     }
-    else if(isPoint == true && e.target.id == "."){
-        onscreen.textContent = `${onscreen.textContent}`;
-    }
-    else if(e.target.id == "."){
-        isPoint = true;
-        onscreen.textContent = `${onscreen.textContent}${e.target.id}`;
-    }
-    else if (isSecondNumber){
-        onscreen.textContent = "";
-        secondNumber += e.target.id;
+    // Handle new input based on the state
+    if (onscreen.textContent === "" || onscreen.textContent === "👀") {
+        onscreen.textContent = input;
+    } else if (isSecondNumber) {
+        secondNumber += input;
         onscreen.textContent = secondNumber;
+    } else {
+        onscreen.textContent += input;
     }
-    else if(onscreen.textContent == "👀"){
-        onscreen.textContent = "";
-        onscreen.textContent = `${onscreen.textContent}${e.target.id}`
-    }
-    else{
-        onscreen.textContent = `${onscreen.textContent}${e.target.id}`;
-    }  
 }
 function StartOperations(e){
     isSecondNumber = true;
-    currentOperations = e.target.id;
+    let operator = e.target.id;
   // Select all divs inside the operations container
-let divs = operations.querySelectorAll("div");
-for(let i = 0; i < divs.length; i++){
+    let divs = operations.querySelectorAll("div");
+    for(let i = 0; i < divs.length; i++){
     let h1 = divs[i].querySelector("h1");
     if(h1.id == e.target.id){
         operationsvalue = !operationsvalue;
         divs[i].style.backgroundColor = operationsvalue ? '#e87a1f': '#FF8F1F';
     }   
-}
+    }
+     if(e.target.id == "*" || e.target.id == "/" || e.target.id == "-" || e.target.id == "+"){
+            currentOperations = e.target.id;
+        }  
     if(!firstNumber){
         firstNumber = onscreen.textContent;
     }
-    let operator = e.target.id;
     if(secondNumber){
-        switch (operator){
-            case "*":
-                MultipleNumbers(parseFloat(firstNumber), parseFloat(secondNumber));
-                break;
-            case "/":
-                DivNumbers(parseFloat(firstNumber), parseFloat(secondNumber));
-                break;
-            case "+":
-                AddNumbers(parseFloat(firstNumber), parseFloat(secondNumber));
-                break;
-            case "-":
-                SubNumbers(parseFloat(firstNumber),parseFloat(secondNumber));
-                break;
-            default:
-                EqualNumbers(parseFloat(firstNumber), parseFloat(secondNumber));
+        if(e.target.id == "="){
+            EqualNumbers(parseFloat(firstNumber), parseFloat(secondNumber));
         }
+        else{
+            switch (operator){
+                case "*":
+                    MultipleNumbers(parseFloat(firstNumber), parseFloat(secondNumber));
+                    break;
+                case "/":
+                    DivNumbers(parseFloat(firstNumber), parseFloat(secondNumber));
+                    break;
+                case "+":
+                    AddNumbers(parseFloat(firstNumber), parseFloat(secondNumber));
+                    break;
+                case "-":
+                    SubNumbers(parseFloat(firstNumber),parseFloat(secondNumber));
+                    break;
+                default:
+                    return;
+            }
+        }     
     }
 }
 function clearScreen(){
