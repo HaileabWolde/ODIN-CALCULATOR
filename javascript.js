@@ -166,11 +166,16 @@ function clearScreen(){
     isSecondNumber = false;
 }
 function toggleValue(){
-    if(onscreen.textContent != 0){
-        onscreen.textContent = -(onscreen.textContent);
-        firstNumber = onscreen.textContent;
+    if(isSecondNumber){
+            onscreen.textContent = -(onscreen.textContent);
+            secondNumber = onscreen.textContent;
     }
-   
+    else{
+        if(onscreen.textContent != 0){
+            onscreen.textContent = -(onscreen.textContent);
+            firstNumber = onscreen.textContent;
+        }      
+    }
 }
 function calcPercentile(){
     if(onscreen.textContent != 0){
