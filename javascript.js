@@ -10,26 +10,47 @@ let secondNumber = "";
 let result = "";
 let operationsvalue = false;
 let currentOperations = null;
+function isInt(n){
+    return n % 1 == 0;
+}
 function AddNumbers(a, b){
      result = a + b;
-    onscreen.textContent = parseFloat(result).toFixed(2);
+     if(!isInt(result)){
+        onscreen.textContent = parseFloat(result).toFixed(2);
+     }
+     else{
+        onscreen.textContent = result;
+     }
     firstNumber = result;
     secondNumber = "";
     currentOperations = null;
+    isSecondNumber = false;
 }
 function SubNumbers(a, b){
      result = a - b;
-    onscreen.textContent = parseFloat(result).toFixed(2);
+     if(!isInt(result)){
+        onscreen.textContent = parseFloat(result).toFixed(2);
+     }
+     else{
+        onscreen.textContent = result;
+     }
     firstNumber = result;
     secondNumber = "";
     currentOperations = null;
+    isSecondNumber = false;
 }
 function MultipleNumbers(a, b){
      result = a * b;
-    onscreen.textContent = parseFloat(result).toFixed(2);
+     if(!isInt(result)){
+        onscreen.textContent = parseFloat(result).toFixed(2);
+     }
+     else{
+        onscreen.textContent = result;
+     }
     firstNumber = result;
     secondNumber = "";
     currentOperations = null;
+    isSecondNumber = false;
 }
 function DivNumbers(a, b){
     if(b == 0){
@@ -41,10 +62,16 @@ function DivNumbers(a, b){
     }
     else{
         result = a / b;
-        onscreen.textContent = parseFloat(result).toFixed(2);
+        if(!isInt(result)){
+            onscreen.textContent = parseFloat(result).toFixed(2);
+         }
+         else{
+            onscreen.textContent = result;
+         }    
         firstNumber = result;
         secondNumber = "";
         currentOperations = null;
+        isSecondNumber = false;
     }
     
 }
@@ -77,7 +104,12 @@ function ButtonClick(e){
     // Handle new input based on the state
     if (onscreen.textContent === "" || onscreen.textContent === "👀") {
         onscreen.textContent = input;
-    } else if (isSecondNumber) {
+    }
+    else if(firstNumber && input === "."){
+        firstNumber += input;
+        onscreen.textContent = firstNumber;
+    }
+     else if (isSecondNumber) {
         secondNumber += input;
         onscreen.textContent = secondNumber;
     } else {
@@ -131,10 +163,12 @@ function clearScreen(){
     secondNumber = "";
     result = "";
     onscreen.textContent = "";
+    isSecondNumber = false;
 }
 function toggleValue(){
     if(onscreen.textContent != 0){
         onscreen.textContent = -(onscreen.textContent);
+        firstNumber = onscreen.textContent;
     }
    
 }
