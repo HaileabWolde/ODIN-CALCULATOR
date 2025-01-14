@@ -122,11 +122,14 @@ function StartOperations(e){
   // Select all divs inside the operations container
     let divs = operations.querySelectorAll("div");
     for(let i = 0; i < divs.length; i++){
-    let h1 = divs[i].querySelector("h1");
-    if(h1.id == e.target.id){
-        operationsvalue = !operationsvalue;
-        divs[i].style.backgroundColor = operationsvalue ? '#e87a1f': '#FF8F1F';
-    }   
+        let h1 = divs[i].querySelector("h1");
+        if(h1.id == operator){
+             operationsvalue = !operationsvalue;
+             console.log(operationsvalue);
+             divs[i].style.backgroundColor ='#e87a1f';
+        }else{
+            divs[i].style.backgroundColor = '#FF8F1F';
+        }
     }
      if(e.target.id == "*" || e.target.id == "/" || e.target.id == "-" || e.target.id == "+"){
             currentOperations = e.target.id;
